@@ -1,13 +1,13 @@
-# #!/usr/bin/env sh
-# . "$(dirname -- "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-# RED='\033[0;31m'
-# BLUE='\033[0;34m'
-# GRAY='\033[1;30m'
-# NC='\033[0m'
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+GRAY='\033[1;30m'
+NC='\033[0m'
 
-# PATHS_LOCALES="packages/checkout-storefront/content/locales apps/saleor-app-checkout/content/locales"
-# echo $PATHS_LOCALES
+PATHS_LOCALES="packages/checkout-storefront/content/locales apps/saleor-app-checkout/content/locales"
+echo $PATHS_LOCALES
 
 # # pnpm run lint
 # pnpm run i18n:extract
