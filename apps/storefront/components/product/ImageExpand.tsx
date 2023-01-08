@@ -1,6 +1,6 @@
 import { XIcon } from "@heroicons/react/outline";
-import Image from "next/legacy/image";
 import React from "react";
+import dynamic from "next/dynamic";
 
 import { ProductMediaFragment } from "@/saleor/api";
 
@@ -8,10 +8,20 @@ interface ImageExpandProps {
   image?: ProductMediaFragment;
   onRemoveExpand: () => void;
 }
+
+const ReactPhotoSphereViewer = dynamic(
+  () => import("react-photo-sphere-viewer").then((mod) => mod.ReactPhotoSphereViewer),
+  {
+    ssr: false,
+  }
+);
+
 export function ImageExpand({ image, onRemoveExpand }: ImageExpandProps) {
   if (!image) {
     return null;
   }
+
+  var imageUrl = image.url;
 
   return (
     <div className="min-h-screen absolute overflow-hidden grid grid-cols-1 mx-auto px-8 md:h-full w-full bg-gray-100">
@@ -22,8 +32,13 @@ export function ImageExpand({ image, onRemoveExpand }: ImageExpandProps) {
       >
         <XIcon className="w-6 h-6" />
       </button>
-      <div className="w-full h-full absolute md:mt-10">
-        <Image src={image.url} alt={image.alt} layout="fill" objectFit="scale-down" />
+      <div className="w-full h-full absolute md:mt-0">
+        <ReactPhotoSphereViewer
+          src={imageUrl.toString()}
+          height={"100vh"}
+          width={"100%"}
+          container={""}
+        ></ReactPhotoSphereViewer>
       </div>
     </div>
   );
