@@ -21,8 +21,6 @@ export function ImageExpand({ image, onRemoveExpand }: ImageExpandProps) {
     return null;
   }
 
-  var imageUrl = image.url;
-
   return (
     <div className="min-h-screen absolute overflow-hidden grid grid-cols-1 mx-auto px-8 md:h-full w-full bg-gray-100">
       <button
@@ -34,7 +32,7 @@ export function ImageExpand({ image, onRemoveExpand }: ImageExpandProps) {
       </button>
       <div className="w-full h-full absolute md:mt-0">
         <ReactPhotoSphereViewer
-          src={imageUrl.toString()}
+          src={image.url}
           height={"100vh"}
           width={"100%"}
           container={""}
